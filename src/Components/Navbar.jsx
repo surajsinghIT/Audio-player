@@ -84,36 +84,44 @@ const Navbar = () => {
         </div>
       </nav><br />
       {remove && (
-        <div className="homepage" style={{ textAlign: 'center' }}>
-          <div style={{ background: '#eba7a7', position: 'relative', left: '166px', width: '950px' }}>
+  <div className="homepage" style={{ textAlign: 'center' }}>
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <div style={{ background: '#eba7a7', padding: '20px' }}>
             <h1>Welcome to MusicMingle</h1>
             <p>Discover your favorite songs here!</p>
             <p>Use the search bar above to find tracks.</p>
           </div>
-          <img height="350px" width="949px" src={music2} alt="Music" />
-
         </div>
-      )}
-      <span style={{ position: 'relative', left: '34px' }}>
-        {Data && (
-          <>
-            {Data.map((e, index) => (
-              <div key={index} style={{ display: 'inline-block', padding: '3px' }}>
-                <div className="card" style={{ width: "18rem" }}>
-                  <img className="card-img-top" src={e.album?.images[0]?.url} alt="Card image cap" />
-                  <div className="card-body">
-                    <h5 className="card-title">{truncateText(e.album?.name, 20)}</h5>
-                    <p className="card-text">
-                      Artist: {e.artists[0]?.name}
-                    </p>
-                    <audio src={e.preview_url} controls style={{ width: '100%' }} onPlay={handleAudioPlay}></audio>
-                  </div>
+      </div>
+      <div className="row mt-3">
+        <div className="col">
+          <img className="img-fluid" style={{height:'309px',width:'751px'}} src={music2} alt="Music" />
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+      <div className="container">
+        <div className="row">
+          {Data && Data.map((e, index) => (
+            <div key={index} className="col-md-4 mb-3">
+              <div className="card">
+                <img className="card-img-top" src={e.album?.images[0]?.url} alt="Card image cap" />
+                <div className="card-body">
+                  <h5 className="card-title">{truncateText(e.album?.name, 20)}</h5>
+                  <p className="card-text">
+                    Artist: {e.artists[0]?.name}
+                  </p>
+                  <audio src={e.preview_url} controls style={{ width: '100%' }} onPlay={handleAudioPlay}></audio>
                 </div>
               </div>
-            ))}
-          </>
-        )}
-      </span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
