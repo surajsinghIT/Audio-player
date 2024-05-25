@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import '../../src/style.css'
+import music2 from './music2.webp';
 
 const Navbar = () => {
   const [Data, setData] = useState([]);
@@ -89,7 +90,8 @@ const Navbar = () => {
             <p>Discover your favorite songs here!</p>
             <p>Use the search bar above to find tracks.</p>
           </div>
-          <img height={'350px'} width={'949px'} src='/music2.webp' alt="Music" />
+          <img height="350px" width="949px" src={music2} alt="Music" />
+
         </div>
       )}
       <span style={{ position: 'relative', left: '34px' }}>
