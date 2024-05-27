@@ -85,23 +85,29 @@ const Navbar = () => {
       </nav><br />
       {remove && (
   <div className="homepage" style={{ textAlign: 'center' }}>
-    <div className="container">
-      <div className="row">
-        <div className="col">
-          <div style={{ background: '#eba7a7', padding: '20px' }}>
-            <h1>Welcome to MusicMingle</h1>
-            <p>Discover your favorite songs here!</p>
-            <p>Use the search bar above to find tracks.</p>
-          </div>
-        </div>
-      </div>
-      <div className="row mt-3">
-        <div className="col">
-          <img className="img-fluid" style={{height:'309px',width:'751px'}} src={music2} alt="Music" />
+  <div className="container">
+    <div className="row">
+      <div className="col-12">
+        <div style={{ background: '#eba7a7', padding: '20px' }}>
+          <h1>Welcome to MusicMingle</h1>
+          <p>Discover your favorite songs here!</p>
+          <p>Use the search bar above to find tracks.</p>
         </div>
       </div>
     </div>
+    <div className="row mt-3">
+      <div className="col-12">
+        <img
+          className="img-fluid"
+          style={{ height: 'auto', width: '100%' }}
+          src={music2}
+          alt="Music"
+        />
+      </div>
+    </div>
   </div>
+</div>
+
 )}
 
       <div className="container">
