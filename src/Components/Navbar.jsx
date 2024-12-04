@@ -2,6 +2,9 @@ import axios from 'axios';
 import { useState } from 'react';
 import '../../src/style.css'
 import music2 from './music2.webp';
+import Footer from '../Pages/Footer';
+import Header from '../Pages/Header';
+import Homepage from '../Pages/Homepage';
 
 const Navbar = () => {
   const [Data, setData] = useState([]);
@@ -50,7 +53,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      {/* <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             MusicMingle
@@ -82,7 +85,11 @@ const Navbar = () => {
             </form>
           </div>
         </div>
-      </nav><br />
+      </nav> */}
+      <Header/>
+      <Homepage/>
+      
+      {/* <br />
       {remove && (
   <div className="homepage" style={{ textAlign: 'center' }}>
   <div className="container">
@@ -106,11 +113,11 @@ const Navbar = () => {
       </div>
     </div>
   </div>
-</div>
+</div> */}
 
-)}
+{/* )} */}
 
-      <div className="container">
+      {/* <div className="container">
         <div className="row">
           {Data && Data.map((e, index) => (
             <div key={index} className="col-md-4 mb-3">
@@ -127,7 +134,8 @@ const Navbar = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
+      <Footer/>
     </div>
   )
 }
