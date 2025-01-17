@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 import SongsDetailShimmer from '../../Common/ShimmerScreen';
 import ShimmerScreen from '../../Common/ShimmerScreen';
 import './SongsDetails.css'
@@ -17,9 +17,11 @@ function SongsDetailSection() {
     const title = params.get("title");
     console.log("title",title)
     const navigate = useNavigate();
+    const hasFetched = useRef(); 
+    console.log("hasFetched",!hasFetched.current)
 
     useEffect(() => {
-      if (title){
+      if (title && !hasFetched.current){
         setisLoading(true);
         const fetchData = async () => {
           try {
@@ -33,6 +35,7 @@ function SongsDetailSection() {
           }
         };
         fetchData();
+        hasFetched.current = true;
       }                    
       }, [title]);
 
