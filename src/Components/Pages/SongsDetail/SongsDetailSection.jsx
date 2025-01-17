@@ -1,28 +1,44 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import SongsDetailShimmer from '../../Common/ShimmerScreen';
+import ShimmerScreen from '../../Common/ShimmerScreen';
+import './SongsDetails.css'
+import { Navigate, useNavigate } from 'react-router-dom';
 
-
-function SongsDetailSection(props) {
+function SongsDetailSection() {
 
     const [Data, setData] = useState([]);
     const [keyword, setKeyword] = useState('');
+    const [isLoading,setisLoading] = useState(false);
     const [remove, setRemove] = useState(true);
     const [currentAudio, setCurrentAudio] = useState(null);
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    const title = params.get("title");
+    console.log("title",title)
+    const navigate = useNavigate();
 
     useEffect(() => {
+      if (title){
+        setisLoading(true);
         const fetchData = async () => {
           try {
-            const apiUrl = `https://v1.nocodeapi.com/surajsingh/spotify/zpXKiKxmnGkXmFkA/search?q=${keyword}&type=track`;
+            const apiUrl = `https://v1.nocodeapi.com/surajsingh/spotify/zpXKiKxmnGkXmFkA/search?q=${title}&type=track`;
             const response = await axios.get(apiUrl);
+            setisLoading(false)
             console.log("Response", response.data.tracks.items);
             setData(response.data.tracks.items);
           } catch (error) {
             console.log("Error:", error);
           }
         };
-    
         fetchData();
-      }, [keyword]);
+      }                    
+      }, [title]);
+
+      useEffect(()=>{
+       window.scroll(0,0)
+      },[])
 
       const truncateText = (text, maxLength) => {
         if (text.length > maxLength) {
@@ -52,10 +68,24 @@ function SongsDetailSection(props) {
 
 
     return (
-        <div>
-            <div className="container">
-                <div className="row">
-                    {Data && Data.map((e, index) => (
+        <div>          
+            <div className="container p-2">            
+            <button type="button" class="btn btn-secondary" onClick={()=>navigate(-1)}>Back</button>
+                <div className="row p-custom">
+                {isLoading ? 
+                ( Array.from({ length: 6 }).map((_, index) => (
+                              <div key={index} className="col-md-4 mb-3">
+                                  <div className="card">
+                                      <ShimmerScreen type="image" />
+                                      <div className="card-body">
+                                          <ShimmerScreen type="text" />
+                                          <ShimmerScreen type="text" />
+                                      </div>
+                                  </div>
+                              </div>
+                          )))
+                        :
+                       Data && Data.map((e, index) => (
                         <div key={index} className="col-md-4 mb-3">
                             <div className="card">
                                 <img className="card-img-top" src={e.album?.images[0]?.url} alt="Card image cap" />

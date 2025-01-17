@@ -1,5 +1,5 @@
 const HOMEPAGE = '/';
-const SONGDETAILS = '/songs-detail';
+const SONGDETAILS = '/songs-listings';
 
 export {
     SONGDETAILS,
