@@ -4,7 +4,7 @@ import './HomePageSection.css';
 import { useNavigate } from "react-router-dom";
 
 const HomePageSection = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate();  
 
   const handleClick = (title) => {
     navigate(`/songs-listings?title=${title}`)
