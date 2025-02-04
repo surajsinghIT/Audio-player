@@ -1,0 +1,30 @@
+/* Base shimmer animation */
+.shimmer {
+    background: linear-gradient(90deg, #f0f0f0 65%, #d3d4d3 90%, #f6fafa4f 95%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+/* Shimmer sizes */
+.shimmer-image {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.shimmer-text {
+    height: 20px;
+    width: 80%;
+    margin-bottom: 8px;
+}
+
+/* Animation keyframes */
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}

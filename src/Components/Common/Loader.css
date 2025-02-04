@@ -1,0 +1,14 @@
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Makes sure the loader takes full height of the viewport */
+    flex-direction: column;
+  }
+  
+  .txt-font {
+    margin-top: 20px; /* Adds space between the loader and text */
+    font-size: 1.2rem;
+    color: #000;
+  }
+  

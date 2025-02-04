@@ -1,0 +1,33 @@
+.tile-card {
+    height: 250px;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer !important;
+  }
+  
+  .tile-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .tile-icon {
+    font-size: 3rem;
+    color: #ff9f1c; /* Custom color for icons */
+    transition: color 0.3s ease;
+  }
+  
+  .tile-card:hover .tile-icon {
+    color: #ff6f61; /* Highlight color on hover */
+  }
+  
+  .tile-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+  

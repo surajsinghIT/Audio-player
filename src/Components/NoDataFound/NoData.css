@@ -1,0 +1,14 @@
+.no-data{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;     
+    text-align: center; 
+    .not-found-msg{
+        font-weight: 600;
+    }
+}
+
+.img-fluid{
+    width: 38rem;
+}
