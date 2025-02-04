@@ -4,6 +4,8 @@ import SongsDetailShimmer from '../../Common/ShimmerScreen';
 import ShimmerScreen from '../../Common/ShimmerScreen';
 import './SongsDetails.css'
 import { Navigate, useNavigate } from 'react-router-dom';
+import { useSearchParams } from "react-router-dom";
+import NoData from '../../NoDataFound/NoData';
 
 function SongsDetailSection() {
 
@@ -11,7 +13,9 @@ function SongsDetailSection() {
     const [keyword, setKeyword] = useState('');
     const [isLoading,setisLoading] = useState(false);
     const [remove, setRemove] = useState(true);
-    const [currentAudio, setCurrentAudio] = useState(null);
+    const [error, setError] = useState(false);
+    const [currentAudio, setCurrentAudio] = useState(null);    
+
     const search = window.location.search;
     const params = new URLSearchParams(search);
     const title = params.get("title");
@@ -19,9 +23,13 @@ function SongsDetailSection() {
     const navigate = useNavigate();
     const hasFetched = useRef(); 
     console.log("hasFetched",!hasFetched.current)
+    // what is hasFetched ?
+//     On the initial render, hasFetched.current is undefined because useRef() initializes the value to undefined by default.
+// undefined is a falsy value in JavaScript, so the condition if (title && !hasFetched.current) evaluates to true (since !undefined is true).
+// As a result, the control enters the if block, the API is called, and hasFetched.current is set to true.
 
     useEffect(() => {
-      if (title && !hasFetched.current){
+      if (title ){
         setisLoading(true);
         const fetchData = async () => {
           try {
@@ -31,11 +39,12 @@ function SongsDetailSection() {
             console.log("Response", response.data.tracks.items);
             setData(response.data.tracks.items);
           } catch (error) {
+            setError(true);
             console.log("Error:", error);
           }
         };
         fetchData();
-        hasFetched.current = true;
+        // hasFetched.current = true;
       }                    
       }, [title]);
 
@@ -71,9 +80,12 @@ function SongsDetailSection() {
 
 
     return (
-        <div>          
+      
+        <>          
+          {error ? <NoData txt={"Something went wrong, please try again"} />
+           : 
             <div className="container p-2">            
-            <button type="button" class="btn btn-secondary" onClick={()=>navigate(-1)}>Back</button>
+            <button type="button" class="btn btn-secondary" onClick={()=>navigate('/')}>Back</button>
                 <div className="row p-custom">
                 {isLoading ? 
                 ( Array.from({ length: 6 }).map((_, index) => (
@@ -104,7 +116,8 @@ function SongsDetailSection() {
                     ))}
                 </div>
             </div>
-        </div>
+            }
+        </>
     )
 }
 

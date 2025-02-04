@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import SearchBox from "../../Common/SearchBox/SearchBox";
 
 const HeaderSection = () => {
   return (
@@ -9,6 +10,7 @@ const HeaderSection = () => {
         <Navbar.Brand href="#">
           <i className="bi bi-music-note-beamed me-2"></i>
           MusicMingle
+         &nbsp;&nbsp; <SearchBox />
         </Navbar.Brand>
 
         {/* Toggle Button for Mobile View */}
