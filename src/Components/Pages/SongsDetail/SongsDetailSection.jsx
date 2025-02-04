@@ -77,7 +77,10 @@ function SongsDetailSection() {
         setCurrentAudio(event.target);
       }
 
-
+      const handleBack = () => {
+        localStorage.setItem("backClicked", "true");
+        navigate('/')
+      }
 
     return (
       
@@ -85,7 +88,7 @@ function SongsDetailSection() {
           {error ? <NoData txt={"Something went wrong, please try again"} />
            : 
             <div className="container p-2">            
-            <button type="button" class="btn btn-secondary" onClick={()=>navigate('/')}>Back</button>
+            <button type="button" class="btn btn-secondary" onClick={handleBack}>Back</button>
                 <div className="row p-custom">
                 {isLoading ? 
                 ( Array.from({ length: 6 }).map((_, index) => (
